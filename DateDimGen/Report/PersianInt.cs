@@ -82,9 +82,7 @@
 
         public string ToString(char separator)
         {
-            return Year.ToString().PadLeft(4) + separator
-               + Month.ToString().PadLeft(2, '0') + separator
-               + Day.ToString().PadLeft(2, '0');
+            return $"{Year,4}{separator}{Month,2:00}{separator}{Day,2:00}";
         }
 
         public static bool operator ==(PersianInt a, PersianInt b)
