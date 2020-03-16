@@ -10,14 +10,14 @@
         }
 
         /// <summary>
-        /// Represents the smallest possible value of <see cref="PersianInt"/>, which is 10101
+        /// Represents the smallest possible value of <see cref="PersianInt"/>, which is 10101 (1/01/01)
         /// </summary>
         public static readonly PersianInt Min = new PersianInt(1, 1, 1);
 
         /// <summary>
-        /// Represents the largest possible value of <see cref="PersianInt"/>, which is 99991230
+        /// Represents the largest possible value of <see cref="PersianInt"/>, which is 93781013 (9378/10/13)
         /// </summary>
-        public static readonly PersianInt Max = new PersianInt(9999, 12, 30);
+        public static readonly PersianInt Max = new PersianInt(9378, 10, 13);
 
         public static PersianInt Create(int year, int month = 1, int day = 1) => new PersianInt(year, month, day);
 
@@ -83,8 +83,8 @@
         public string ToString(char separator)
         {
             return Year.ToString().PadLeft(4) + separator
-                + Month.ToString().PadLeft(2, '0') + separator
-                + Day.ToString().PadLeft(2, '0');
+               + Month.ToString().PadLeft(2, '0') + separator
+               + Day.ToString().PadLeft(2, '0');
         }
 
         public static bool operator ==(PersianInt a, PersianInt b)
