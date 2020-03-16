@@ -6,13 +6,9 @@
 
         public PersianInt To { get; set; }
 
-        public int FromPersianDateInt => From.ToInt();
-
-        public int ToPersianDateInt => To.ToInt();
-
         public ReportGroupMetric GroupBy { get; set; }
 
-        public bool IsValid => ToPersianDateInt >= FromPersianDateInt;
+        public bool IsValid => From <= To;
 
         public override string ToString()
         {

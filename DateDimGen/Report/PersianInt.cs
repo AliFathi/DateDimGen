@@ -97,6 +97,26 @@
             return a.ToInt() != b.ToInt();
         }
 
+        public static bool operator >(PersianInt a, PersianInt b)
+        {
+            return a.ToInt() > b.ToInt();
+        }
+
+        public static bool operator >=(PersianInt a, PersianInt b)
+        {
+            return a.ToInt() >= b.ToInt();
+        }
+
+        public static bool operator <(PersianInt a, PersianInt b)
+        {
+            return a.ToInt() < b.ToInt();
+        }
+
+        public static bool operator <=(PersianInt a, PersianInt b)
+        {
+            return a.ToInt() <= b.ToInt();
+        }
+
         private int Inverse(int value)
         {
             return 13 - value;
