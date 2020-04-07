@@ -36,7 +36,9 @@ namespace DateDimGen.Report
         }
 
         public static PersianDate Now => new PersianDate(System.DateTime.Now);
+
         public static PersianDate UtcNow => new PersianDate(System.DateTime.UtcNow);
+
         public static PersianDate Today => new PersianDate(System.DateTime.Today);
 
         public int Day { get; }
