@@ -106,7 +106,7 @@ namespace DateDimGen.Report
                     Day = pf.Day,
                     DayName = DateUtility.GetPersianDayName(_pc.GetDayOfWeek(f)),
                     Month = pf.Month,
-                    MonthName = DateUtility.GetMonthName(pf.Month),
+                    MonthName = DateUtility.GetPersianMonthName(pf.Month),
                     Year = pf.Year,
                 };
 
@@ -125,7 +125,7 @@ namespace DateDimGen.Report
                 {
                     Key = pf.Year * 100 + pf.Month,
                     Month = pf.Month,
-                    MonthName = DateUtility.GetMonthName(pf.Month),
+                    MonthName = DateUtility.GetPersianMonthName(pf.Month),
                     Year = pf.Year,
                 };
 
