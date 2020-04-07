@@ -59,6 +59,40 @@ namespace DateDimGen.Report
             }
         }
 
+        public IEnumerable<ReportItem<TValue>> GenerateByMonth<TValue>(System.DateTime? from = null, System.DateTime? to = null)
+        {
+            System.DateTime f = from ?? _MIN, t = to ?? _MAX;
+
+            while (f < t)
+            {
+                yield return new ReportItem<TValue>
+                {
+                    Key = f.Year * 100 + f.Month,
+                    Month = f.Month,
+                    MonthName = DateUtility.GetMonthName(f.Month),
+                    Year = f.Year,
+                };
+
+                f = f.AddMonths(1);
+            }
+        }
+
+        public IEnumerable<ReportItem<TValue>> GenerateByYear<TValue>(System.DateTime? from = null, System.DateTime? to = null)
+        {
+            System.DateTime f = from ?? _MIN, t = to ?? _MAX;
+
+            while (f < t)
+            {
+                yield return new ReportItem<TValue>
+                {
+                    Key = f.Year,
+                    Year = f.Year,
+                };
+
+                f = f.AddYears(1);
+            }
+        }
+
         public IEnumerable<ReportItem<TValue>> GenerateByPersianDay<TValue>(System.DateTime? from = null, System.DateTime? to = null)
         {
             System.DateTime f = from ?? _MIN, t = to ?? _MAX;
@@ -80,24 +114,6 @@ namespace DateDimGen.Report
             }
         }
 
-        public IEnumerable<ReportItem<TValue>> GenerateByMonth<TValue>(System.DateTime? from = null, System.DateTime? to = null)
-        {
-            System.DateTime f = from ?? _MIN, t = to ?? _MAX;
-
-            while (f < t)
-            {
-                yield return new ReportItem<TValue>
-                {
-                    Key = f.Year * 100 + f.Month,
-                    Month = f.Month,
-                    MonthName = DateUtility.GetMonthName(f.Month),
-                    Year = f.Year,
-                };
-
-                f = f.AddMonths(1);
-            }
-        }
-
         public IEnumerable<ReportItem<TValue>> GenerateByPersianMonth<TValue>(System.DateTime? from = null, System.DateTime? to = null)
         {
             System.DateTime f = from ?? _MIN, t = to ?? _MAX;
@@ -114,22 +130,6 @@ namespace DateDimGen.Report
                 };
 
                 f = pf.AddMonths(1).ToDateTime();
-            }
-        }
-
-        public IEnumerable<ReportItem<TValue>> GenerateByYear<TValue>(System.DateTime? from = null, System.DateTime? to = null)
-        {
-            System.DateTime f = from ?? _MIN, t = to ?? _MAX;
-
-            while (f < t)
-            {
-                yield return new ReportItem<TValue>
-                {
-                    Key = f.Year,
-                    Year = f.Year,
-                };
-
-                f = f.AddYears(1);
             }
         }
 
