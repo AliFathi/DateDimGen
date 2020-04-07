@@ -9,7 +9,7 @@ namespace DateDimGen.Report
     {
         public static PersianDate ToPersianDate(this DateTime dateTime)
         {
-            return PersianDate.Create(dateTime);
+            return new PersianDate(dateTime);
         }
 
         public static IQueryable<ReportItem<int>> ToJoinReport<TEntity>(
