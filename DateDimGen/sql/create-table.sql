@@ -38,5 +38,3 @@ CREATE TABLE [dbo].[DateDimension](
 ) ON [PRIMARY]
 
 GO
-
-

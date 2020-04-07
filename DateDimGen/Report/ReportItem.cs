@@ -11,22 +11,6 @@
         public bool IsValid => From <= To;
     }
 
-    public class PersianReportInput
-    {
-        public PersianDate From { get; set; }
-
-        public PersianDate To { get; set; }
-
-        public ReportGroupMetric GroupBy { get; set; }
-
-        public bool IsValid => From <= To;
-
-        public override string ToString()
-        {
-            return $"[{From}, {To}) group by {GroupBy} (valid: {IsValid})";
-        }
-    }
-
     public class ReportItem<TValue>
     {
         public int Key { get; set; }

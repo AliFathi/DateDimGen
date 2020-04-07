@@ -7,7 +7,7 @@ namespace DateDimGen.Report
         /// <summary>
         /// Represents the smallest possible value of <see cref="PersianDate"/>, which is 0001-01-01, equals to 0622-03-22 in Gregorian.
         /// </summary>
-        public static readonly PersianDate Min = new PersianDate(1, 1, 1);
+        public static readonly PersianDate Min = new PersianDate(0001, 01, 01);
 
         /// <summary>
         /// Represents the largest possible value of <see cref="PersianDate"/>, which is 9378-10-13, equals to 9999-12-31 in Gregorian.
