@@ -5,12 +5,12 @@ namespace DateDimGen.Report
     public readonly struct PersianDate
     {
         /// <summary>
-        /// Represents the smallest possible value of <see cref="PersianDate"/>, which is 0001/01/01 (1/01/01)
+        /// Represents the smallest possible value of <see cref="PersianDate"/>, which is 0001-01-01, equals to 0622-03-22 in Gregorian.
         /// </summary>
         public static readonly PersianDate Min = new PersianDate(1, 1, 1);
 
         /// <summary>
-        /// Represents the largest possible value of <see cref="PersianDate"/>, which is 9378/10/13 (9378/10/13)
+        /// Represents the largest possible value of <see cref="PersianDate"/>, which is 9378-10-13, equals to 9999-12-31 in Gregorian.
         /// </summary>
         public static readonly PersianDate Max = new PersianDate(9378, 10, 13);
 
