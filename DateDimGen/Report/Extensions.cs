@@ -15,18 +15,18 @@ namespace DateDimGen.Report
         public static IQueryable<ReportItem<int>> ToJoinReport<TEntity>(
             this IQueryable<TEntity> source,
             IQueryable<DimDate> dimDate,
-            PersianReportInput reportInput,
+            ReportInput reportInput,
             Expression<Func<TEntity, DateTime>> innerKey
         ) where TEntity : class
         {
             var join = source
                 .Join(dimDate, innerKey, d => d.Date, (e, d) => new Joint<TEntity> { E = e, D = d });
 
-            if (reportInput.From != PersianDate.Min)
-                join = join.Where(a => a.D.PersianDateInt >= reportInput.From.ToInt());
+            if (reportInput.From.HasValue)
+                join = join.Where(a => a.D.Date >= reportInput.From.Value);
 
-            if (reportInput.To != PersianDate.Max)
-                join = join.Where(a => a.D.PersianDateInt < reportInput.To.ToInt());
+            if (reportInput.To.HasValue)
+                join = join.Where(a => a.D.Date < reportInput.To.Value);
 
             var dates = join.Select(j => j.D);
             IQueryable<ReportItem<int>> select;
@@ -102,7 +102,7 @@ namespace DateDimGen.Report
         public static IQueryable<ReportItem<int>> ToLeftJoinReport<TEntity>(
             this IQueryable<TEntity> source,
             IQueryable<DimDate> dimDate,
-            PersianReportInput reportInput,
+            ReportInput reportInput,
             Expression<Func<TEntity, DateTime>> innerKey
         ) where TEntity : class
         {
@@ -110,11 +110,11 @@ namespace DateDimGen.Report
                 .GroupJoin(source, d => d.Date, innerKey, (d, e) => new GroupJoint<TEntity> { D = d, E = e })
                 .SelectMany(g => g.E.DefaultIfEmpty(), (g, e) => new Joint<TEntity> { D = g.D, E = e });
 
-            if (reportInput.From != PersianDate.Min)
-                leftJoin = leftJoin.Where(a => a.D.PersianDateInt >= reportInput.From.ToInt());
+            if (reportInput.From.HasValue)
+                leftJoin = leftJoin.Where(a => a.D.Date >= reportInput.From.Value);
 
-            if (reportInput.To != PersianDate.Max)
-                leftJoin = leftJoin.Where(a => a.D.PersianDateInt < reportInput.To.ToInt());
+            if (reportInput.To.HasValue)
+                leftJoin = leftJoin.Where(a => a.D.Date < reportInput.To.Value);
 
             var dates = leftJoin.Select(j => j.D);
             IQueryable<ReportItem<int>> select;
