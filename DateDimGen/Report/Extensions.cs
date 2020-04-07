@@ -5,8 +5,19 @@ using System.Linq.Expressions;
 
 namespace DateDimGen.Report
 {
-    public static class DateTimeExtensions
+    public static class Extensions
     {
+        private static readonly ReportRangeGenerator _rangeGen = new ReportRangeGenerator();
+
+        public static IEnumerable<ReportItem<TValue>> FillTheGaps<TValue>(
+            this IEnumerable<ReportItem<TValue>> report,
+            ReportInput input
+        ) where TValue : struct
+        {
+            var range = _rangeGen.Generate<TValue>(input);
+            return report.Union(range).OrderBy(r => r.Key).ToList();
+        }
+
         public static PersianDate ToPersianDate(this DateTime dateTime)
         {
             return new PersianDate(dateTime);

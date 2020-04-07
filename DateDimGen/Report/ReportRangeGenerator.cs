@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace DateDimGen.Report
 {
-    public class DateReportRangeGenerator
+    public class ReportRangeGenerator
     {
         private readonly System.DateTime _MIN = new System.DateTime(2016, 03, 20);
         private readonly System.DateTime _MAX = new System.DateTime(2032, 03, 19);

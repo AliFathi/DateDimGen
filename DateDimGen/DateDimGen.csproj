@@ -52,7 +52,7 @@
     <Compile Include="Generator\DateUtility.cs" />
     <Compile Include="Generator\DimDate.cs" />
     <Compile Include="Generator\Generator.cs" />
-    <Compile Include="Report\DateReportRangeGenerator.cs" />
+    <Compile Include="Report\ReportRangeGenerator.cs" />
     <Compile Include="Report\Extensions.cs" />
     <Compile Include="Report\PersianDate.cs" />
     <Compile Include="Report\ReportItem.cs" />

@@ -11,7 +11,7 @@
         public bool IsValid => From <= To;
     }
 
-    public class ReportItem<TValue>
+    public class ReportItem<TValue> : System.IEquatable<ReportItem<TValue>>
     {
         public int Key { get; set; }
 
@@ -26,6 +26,16 @@
         public string MonthName { get; set; }
 
         public int Year { get; set; }
+
+        public bool Equals(ReportItem<TValue> other)
+        {
+            return Key.Equals(other.Key);
+        }
+
+        public override int GetHashCode()
+        {
+            return Key.GetHashCode();
+        }
     }
 
     public enum ReportGroupMetric
