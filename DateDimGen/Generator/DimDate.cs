@@ -16,7 +16,7 @@ namespace DateDimGen
             DayOfMonth = d.Day;
             DayOfYear = d.DayOfYear;
             Month = d.Month;
-            MonthName = GetMonthName(d.Month);
+            MonthName = DateUtility.GetMonthName(d.Month);
             Year = d.Year;
 
             PersianDate = j.ToShortDateString();
@@ -30,10 +30,10 @@ namespace DateDimGen
             PersianWeekOfYear = j.GetWeekOfYear;
             PersianMonth = j.Month;
             PersianMonthName = j.MonthName;
-            PersianQuarter = GetQuarter(j.Month);
-            PersianQuarterName = GetPersinQuarterName(PersianQuarter);
-            PersianHalfYear = GetHalfYear(j.Month);
-            PersianHalfYearName = GetPersianHalfYearName(PersianHalfYear);
+            PersianQuarter = DateUtility.GetQuarter(j.Month);
+            PersianQuarterName = DateUtility.GetPersinQuarterName(PersianQuarter);
+            PersianHalfYear = DateUtility.GetHalfYear(j.Month);
+            PersianHalfYearName = DateUtility.GetPersianHalfYearName(PersianHalfYear);
             PersianYear = j.Year;
             PersianIsLeapYear = j.IsLeapYear;
         }
@@ -97,67 +97,5 @@ namespace DateDimGen
         // سال
         public int PersianYear { get; }
         public bool PersianIsLeapYear { get; set; }
-
-        private int GetQuarter(int m)
-        {
-            var i = m - 1;
-            return ((i - (i % 3)) / 3) + 1;
-        }
-
-        private int GetHalfYear(int m) => m > 6 ? 2 : 1;
-
-        private string GetQuarterName(int q)
-        {
-            switch (q)
-            {
-                case 1: return "Spring";
-                case 2: return "Summer";
-                case 3: return "Fall";
-                case 4: return "Winter";
-                default: throw new ArgumentOutOfRangeException("quarter");
-            }
-        }
-
-        private string GetPersinQuarterName(int q)
-        {
-            switch (q)
-            {
-                case 1: return "بهار";
-                case 2: return "تابستان";
-                case 3: return "پاییز";
-                case 4: return "زمستان";
-                default: throw new ArgumentOutOfRangeException("jalili quarter");
-            }
-        }
-
-        private string GetPersianHalfYearName(int h)
-        {
-            switch (h)
-            {
-                case 1: return "نیمه‌ی اول";
-                case 2: return "نیمه‌ی دوم";
-                default: throw new ArgumentOutOfRangeException("half");
-            }
-        }
-
-        private string GetMonthName(int m)
-        {
-            switch (m)
-            {
-                case 1: return "January";
-                case 2: return "February";
-                case 3: return "March";
-                case 4: return "April";
-                case 5: return "May";
-                case 6: return "June";
-                case 7: return "July";
-                case 8: return "August";
-                case 9: return "September";
-                case 10: return "October";
-                case 11: return "November";
-                case 12: return "December";
-                default: throw new ArgumentOutOfRangeException("month");
-            }
-        }
     }
 }

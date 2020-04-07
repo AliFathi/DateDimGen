@@ -2,9 +2,20 @@
 {
     public class ReportInput
     {
-        public PersianInt From { get; set; }
+        public System.DateTime? From { get; set; }
 
-        public PersianInt To { get; set; }
+        public System.DateTime? To { get; set; }
+
+        public ReportGroupMetric GroupBy { get; set; }
+
+        public bool IsValid => From <= To;
+    }
+
+    public class PersianReportInput
+    {
+        public PersianDate From { get; set; }
+
+        public PersianDate To { get; set; }
 
         public ReportGroupMetric GroupBy { get; set; }
 
@@ -17,15 +28,6 @@
     }
 
     public class ReportItem<TValue>
-    {
-        public int Key { get; set; }
-
-        public string Label { get; set; }
-
-        public TValue Value { get; set; }
-    }
-
-    public class CountReportItem<TValue>
     {
         public int Key { get; set; }
 
@@ -45,8 +47,25 @@
     public enum ReportGroupMetric
     {
         Default,
+
+        Day,
+
+        Week,
+
+        Month,
+
+        Quarter,
+
+        Year,
+
         PersianDay,
+
+        PersianWeek,
+
         PersianMonth,
+
+        PersianQuarter,
+
         PersianYear,
     }
 }
