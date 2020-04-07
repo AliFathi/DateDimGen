@@ -18,7 +18,7 @@
         {
             if (month.HasValue)
             {
-                var from = PersianDate.Create(year ?? _dateSvc.PersianUtcNow.Year, month.Value);
+                var from = new PersianDate(year ?? _dateSvc.PersianUtcNow.Year, month.Value);
                 var to = from.AddMonths(1);
 
                 return new ReportInput
@@ -31,7 +31,7 @@
 
             if (year.HasValue)
             {
-                var from = PersianDate.Create(year.Value);
+                var from = new PersianDate(year.Value);
                 var to = from.AddYears(1);
 
                 return new ReportInput
@@ -56,7 +56,7 @@
 
             if (takeMonth.HasValue)
             {
-                var to = PersianDate.Create(_dateSvc.PersianUtcNow.Year, _dateSvc.PersianUtcNow.Month).AddMonths(1);
+                var to = new PersianDate(_dateSvc.PersianUtcNow.Year, _dateSvc.PersianUtcNow.Month).AddMonths(1);
                 var from = to.AddMonths(-takeMonth.Value);
 
                 return new ReportInput
@@ -69,7 +69,7 @@
 
             if (takeYear.HasValue)
             {
-                var to = PersianDate.Create(_dateSvc.PersianUtcNow.Year).AddYears(1);
+                var to = new PersianDate(_dateSvc.PersianUtcNow.Year).AddYears(1);
                 var from = to.AddYears(-takeYear.Value);
 
                 return new ReportInput
@@ -82,15 +82,15 @@
 
             if (fromMonth.HasValue)
             {
-                var from = PersianDate.Create(fromYear ?? _dateSvc.PersianUtcNow.Year, fromMonth.Value);
+                var from = new PersianDate(fromYear ?? _dateSvc.PersianUtcNow.Year, fromMonth.Value);
                 PersianDate to;
 
                 if (toMonth.HasValue)
-                    to = PersianDate.Create(toYear ?? _dateSvc.PersianUtcNow.Year, toMonth.Value);
+                    to = new PersianDate(toYear ?? _dateSvc.PersianUtcNow.Year, toMonth.Value);
                 else if (toYear.HasValue)
-                    to = PersianDate.Create(toYear.Value);
+                    to = new PersianDate(toYear.Value);
                 else
-                    //to = PersianDate.Create(_dateSvc.PersianYear, _dateSvc.PersianMonth).AddMonth(1);
+                    //to = new PersianDate(_dateSvc.PersianYear, _dateSvc.PersianMonth).AddMonth(1);
                     to = PersianDate.Max;
 
                 return new ReportInput
@@ -103,15 +103,15 @@
 
             if (fromYear.HasValue)
             {
-                var from = PersianDate.Create(fromYear.Value);
+                var from = new PersianDate(fromYear.Value);
                 PersianDate to;
 
                 if (toMonth.HasValue)
-                    to = PersianDate.Create(toYear ?? _dateSvc.PersianUtcNow.Year, toMonth.Value);
+                    to = new PersianDate(toYear ?? _dateSvc.PersianUtcNow.Year, toMonth.Value);
                 else if (toYear.HasValue)
-                    to = PersianDate.Create(toYear.Value);
+                    to = new PersianDate(toYear.Value);
                 else
-                    //to = PersianDate.Create(_dateSvc.PersianYear).AddYear(1);
+                    //to = new PersianDate(_dateSvc.PersianYear).AddYear(1);
                     to = PersianDate.Max;
 
                 return new ReportInput
@@ -127,7 +127,7 @@
                 return new ReportInput
                 {
                     From = null,
-                    To = PersianDate.Create(toYear ?? _dateSvc.PersianUtcNow.Year, toMonth.Value).ToDateTime(),
+                    To = new PersianDate(toYear ?? _dateSvc.PersianUtcNow.Year, toMonth.Value).ToDateTime(),
                     GroupBy = ReportGroupMetric.PersianMonth,
                 };
             }
@@ -137,7 +137,7 @@
                 return new ReportInput
                 {
                     From = null,
-                    To = PersianDate.Create(toYear.Value).ToDateTime(),
+                    To = new PersianDate(toYear.Value).ToDateTime(),
                     GroupBy = ReportGroupMetric.PersianYear,
                 };
             }
@@ -159,7 +159,7 @@
         {
             if (month.HasValue)
             {
-                var from = PersianDate.Create(year ?? _dateSvc.PersianNow.Year, month.Value);
+                var from = new PersianDate(year ?? _dateSvc.PersianNow.Year, month.Value);
                 var to = from.AddMonths(1);
 
                 return new PersianReportInput
@@ -172,7 +172,7 @@
 
             if (year.HasValue)
             {
-                var from = PersianDate.Create(year.Value);
+                var from = new PersianDate(year.Value);
                 var to = from.AddYears(1);
 
                 return new PersianReportInput
@@ -197,7 +197,7 @@
 
             if (takeMonth.HasValue)
             {
-                var to = PersianDate.Create(_dateSvc.PersianNow.Year, _dateSvc.PersianNow.Month).AddMonths(1);
+                var to = new PersianDate(_dateSvc.PersianNow.Year, _dateSvc.PersianNow.Month).AddMonths(1);
                 var from = to.AddMonths(-takeMonth.Value);
 
                 return new PersianReportInput
@@ -210,7 +210,7 @@
 
             if (takeYear.HasValue)
             {
-                var to = PersianDate.Create(_dateSvc.PersianNow.Year).AddYears(1);
+                var to = new PersianDate(_dateSvc.PersianNow.Year).AddYears(1);
                 var from = to.AddYears(-takeYear.Value);
 
                 return new PersianReportInput
@@ -223,15 +223,15 @@
 
             if (fromMonth.HasValue)
             {
-                var from = PersianDate.Create(fromYear ?? _dateSvc.PersianNow.Year, fromMonth.Value);
+                var from = new PersianDate(fromYear ?? _dateSvc.PersianNow.Year, fromMonth.Value);
                 PersianDate to;
 
                 if (toMonth.HasValue)
-                    to = PersianDate.Create(toYear ?? _dateSvc.PersianNow.Year, toMonth.Value);
+                    to = new PersianDate(toYear ?? _dateSvc.PersianNow.Year, toMonth.Value);
                 else if (toYear.HasValue)
-                    to = PersianDate.Create(toYear.Value);
+                    to = new PersianDate(toYear.Value);
                 else
-                    //to = PersianDate.Create(_dateSvc.PersianYear, _dateSvc.PersianMonth).AddMonth(1);
+                    //to = new PersianDate(_dateSvc.PersianYear, _dateSvc.PersianMonth).AddMonth(1);
                     to = PersianDate.Max;
 
                 return new PersianReportInput
@@ -244,15 +244,15 @@
 
             if (fromYear.HasValue)
             {
-                var from = PersianDate.Create(fromYear.Value);
+                var from = new PersianDate(fromYear.Value);
                 PersianDate to;
 
                 if (toMonth.HasValue)
-                    to = PersianDate.Create(toYear ?? _dateSvc.PersianNow.Year, toMonth.Value);
+                    to = new PersianDate(toYear ?? _dateSvc.PersianNow.Year, toMonth.Value);
                 else if (toYear.HasValue)
-                    to = PersianDate.Create(toYear.Value);
+                    to = new PersianDate(toYear.Value);
                 else
-                    //to = PersianDate.Create(_dateSvc.PersianYear).AddYear(1);
+                    //to = new PersianDate(_dateSvc.PersianYear).AddYear(1);
                     to = PersianDate.Max;
 
                 return new PersianReportInput
@@ -268,7 +268,7 @@
                 return new PersianReportInput
                 {
                     From = PersianDate.Min,
-                    To = PersianDate.Create(toYear ?? _dateSvc.PersianNow.Year, toMonth.Value),
+                    To = new PersianDate(toYear ?? _dateSvc.PersianNow.Year, toMonth.Value),
                     GroupBy = ReportGroupMetric.PersianMonth,
                 };
             }
@@ -278,7 +278,7 @@
                 return new PersianReportInput
                 {
                     From = PersianDate.Min,
-                    To = PersianDate.Create(toYear.Value),
+                    To = new PersianDate(toYear.Value),
                     GroupBy = ReportGroupMetric.PersianYear,
                 };
             }

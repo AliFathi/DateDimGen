@@ -5,19 +5,19 @@ namespace DateDimGen.Report
     public readonly struct PersianDate
     {
         /// <summary>
-        /// Represents the smallest possible value of <see cref="PersianDate"/>, which is 10101 (1/01/01)
+        /// Represents the smallest possible value of <see cref="PersianDate"/>, which is 0001/01/01 (1/01/01)
         /// </summary>
         public static readonly PersianDate Min = new PersianDate(1, 1, 1);
 
         /// <summary>
-        /// Represents the largest possible value of <see cref="PersianDate"/>, which is 93781013 (9378/10/13)
+        /// Represents the largest possible value of <see cref="PersianDate"/>, which is 9378/10/13 (9378/10/13)
         /// </summary>
         public static readonly PersianDate Max = new PersianDate(9378, 10, 13);
 
         public readonly System.DateTime _date;
         public readonly PersianCalendar _pc;
 
-        public PersianDate(int year, int month, int day)
+        public PersianDate(int year, int month = 1, int day = 1)
         {
             _pc = new PersianCalendar();
             _date = _pc.ToDateTime(year, month, day, 0, 0, 0, 0);
@@ -35,7 +35,7 @@ namespace DateDimGen.Report
             Year = _pc.GetYear(date);
         }
 
-        public static PersianDate Today => Create(System.DateTime.Today);
+        public static PersianDate Today => new PersianDate(System.DateTime.Today);
 
         public int Day { get; }
 
@@ -43,29 +43,19 @@ namespace DateDimGen.Report
 
         public int Year { get; }
 
-        public static PersianDate Create(int year, int month = 1, int day = 1)
-        {
-            return new PersianDate(year, month, day);
-        }
-
-        public static PersianDate Create(System.DateTime date)
-        {
-            return new PersianDate(date);
-        }
-
         public PersianDate AddDays(int days)
         {
-            return Create(_pc.AddDays(_date, days));
+            return new PersianDate(_pc.AddDays(_date, days));
         }
 
         public PersianDate AddMonths(int months)
         {
-            return Create(_pc.AddMonths(_date, months));
+            return new PersianDate(_pc.AddMonths(_date, months));
         }
 
         public PersianDate AddYears(int years)
         {
-            return Create(_pc.AddYears(_date, years));
+            return new PersianDate(_pc.AddYears(_date, years));
         }
 
         public System.DateTime ToDateTime()
