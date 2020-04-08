@@ -18,11 +18,6 @@ namespace DateDimGen.Report
             return report.Union(range).OrderBy(r => r.Key).ToList();
         }
 
-        public static PersianDate ToPersianDate(this DateTime dateTime)
-        {
-            return new PersianDate(dateTime);
-        }
-
         public static IQueryable<ReportItem<int>> ToJoinReport<TEntity>(
             this IQueryable<TEntity> source,
             IQueryable<DimDate> dimDate,

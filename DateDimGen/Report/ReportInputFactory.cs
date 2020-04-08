@@ -11,7 +11,7 @@
 
         public ReportInput Create(
             int? month = null, int? year = null,
-            int? takeDays = null, int? takeMonth = null, int? takeYear = null,
+            int? takeDays = null, int? takeMonths = null, int? takeYears = null,
             int? fromMonth = null, int? fromYear = null,
             int? toMonth = null, int? toYear = null
         )
@@ -54,10 +54,10 @@
                 };
             }
 
-            if (takeMonth.HasValue)
+            if (takeMonths.HasValue)
             {
                 var to = new PersianDate(_dateSvc.PersianUtcNow.Year, _dateSvc.PersianUtcNow.Month).AddMonths(1);
-                var from = to.AddMonths(-takeMonth.Value);
+                var from = to.AddMonths(-takeMonths.Value);
 
                 return new ReportInput
                 {
@@ -67,10 +67,10 @@
                 };
             }
 
-            if (takeYear.HasValue)
+            if (takeYears.HasValue)
             {
                 var to = new PersianDate(_dateSvc.PersianUtcNow.Year).AddYears(1);
-                var from = to.AddYears(-takeYear.Value);
+                var from = to.AddYears(-takeYears.Value);
 
                 return new ReportInput
                 {

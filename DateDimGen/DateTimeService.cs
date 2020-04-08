@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DateDimGen.Report
+namespace DateDimGen
 {
     public class DateTimeService
     {

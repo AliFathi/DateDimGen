@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
 
-namespace DateDimGen.Report
+namespace DateDimGen
 {
-    public readonly struct PersianDate
+    public readonly struct PersianDate : System.IEquatable<PersianDate>
     {
         /// <summary>
         /// Represents the smallest possible value of <see cref="PersianDate"/>, which is 0001-01-01, equals to 0622-03-22 in Gregorian.
@@ -75,9 +75,14 @@ namespace DateDimGen.Report
         public override bool Equals(object obj)
         {
             if (obj != null && obj is PersianDate that)
-                return this.ToInt().Equals(that.ToInt());
+                return this.Equals(that);
 
             return false;
+        }
+
+        public bool Equals(PersianDate other)
+        {
+            return this.ToInt().Equals(other.ToInt());
         }
 
         public override int GetHashCode()
