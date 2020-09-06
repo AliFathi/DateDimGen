@@ -5,8 +5,8 @@ namespace DateDimGen.Report
 {
     public class ReportRangeGenerator
     {
-        private readonly System.DateTime _MIN = new System.DateTime(2016, 03, 20);
-        private readonly System.DateTime _MAX = new System.DateTime(2032, 03, 19);
+        private readonly System.DateTime _MIN = new System.DateTime(2016, 03, 20); // 1395-01-01 in Persian
+        private readonly System.DateTime _MAX = new System.DateTime(2032, 03, 20); // 1411-01-01 in Persian
         private readonly PersianCalendar _pc = new PersianCalendar();
 
         public IEnumerable<ReportItem<TValue>> Generate<TValue>(ReportInput input)
