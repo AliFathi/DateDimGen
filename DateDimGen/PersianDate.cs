@@ -22,6 +22,7 @@ namespace DateDimGen
             _pc = new PersianCalendar();
             _date = _pc.ToDateTime(year, month, day, 0, 0, 0, 0);
             Day = day;
+            DayOfWeek = GetDayOfWeek(_date.DayOfWeek);
             Month = month;
             Year = year;
         }
@@ -31,6 +32,7 @@ namespace DateDimGen
             _pc = new PersianCalendar();
             _date = date;
             Day = _pc.GetDayOfMonth(date);
+            DayOfWeek = GetDayOfWeek(date.DayOfWeek);
             Month = _pc.GetMonth(date);
             Year = _pc.GetYear(date);
         }
@@ -42,6 +44,8 @@ namespace DateDimGen
         public static PersianDate Today => new PersianDate(System.DateTime.Today);
 
         public int Day { get; }
+
+        public int DayOfWeek { get; }
 
         public int Month { get; }
 
@@ -98,6 +102,21 @@ namespace DateDimGen
         public string ToString(char separator)
         {
             return $"{Year,4}{separator}{Month,2:00}{separator}{Day,2:00}";
+        }
+
+        public static int GetDayOfWeek(System.DayOfWeek dayOfWeek)
+        {
+            switch (dayOfWeek)
+            {
+                case System.DayOfWeek.Sunday: return 2;
+                case System.DayOfWeek.Monday: return 3;
+                case System.DayOfWeek.Tuesday: return 4;
+                case System.DayOfWeek.Wednesday: return 5;
+                case System.DayOfWeek.Thursday: return 6;
+                case System.DayOfWeek.Friday: return 7;
+                case System.DayOfWeek.Saturday: return 1;
+                default: return 0;
+            }
         }
 
         public static bool operator ==(PersianDate a, PersianDate b)
